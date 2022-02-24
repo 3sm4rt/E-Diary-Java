@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="fragments/headLoggedIn :: LoginContent">
+<link rel="stylesheet" type="text/css" th:href="@{/userHome.css}" />
+</head>
+<body>
+
+
+	<table>
+		<tr th:each="User : ${Users}">
+			<th>10.A</th>
+			<td th:text="${User.fullname}"></td>
+
+
+		</tr>
+		<tr>
+
+ 			<th>Grade</th>
+ 			<th>Grade Date</th>
+ 			<th>Description</th>
+
+		</tr>
+		<tr th:if="${grades.empty}">
+			<td colspan="5">No Grades Available</td>
+		</tr>
+		<tr th:each="grades : ${grades}">
+			<td th:text="${grades.grade}"></td>
+			<td th:text="${grades.gradeDate}"></td>
+			<td th:text="${grades.description}"></td>
+
+
+
+
+		</tr>
+
+	</table>
+
+</body>
+</html>

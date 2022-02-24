@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="fragments/headLoggedIn :: LoginContent">
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+</head>
+<body>
+	<form th:action="@{/adminHome}" method="post">
+		<div>
+
+			<table >
+			<thead>
+				<tr>
+					<th>Full Name</th>
+					<th>Username</th>
+					<th>Email</th>
+					<th>Activated</th>
+					<th>Role Type</th>
+					
+				</tr>
+			</thead>
+			
+				<tr th:each="adminshow : ${AdminShow}">
+				<td th:text="${adminshow.fullname}"></td>
+				<td th:text="${adminshow.username}"></td>
+				<td th:text="${adminshow.email}"></td>
+				<td th:text="${adminshow.activated}"></td>
+				<td th:text="${adminshow.role_type}"></td>
+				
+				<td><a th:href="@{/deleteUser/} +${adminshow.username}">Delete</a></td>
+				<td><a th:href="@{/blockUser/} + ${adminshow.username}">Block</a></td>
+				</tr>
+				</table>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="fragments/headLoggedIn :: LoginContent">
+
+</head>
+<body>
+
+
+	<table>
+		<tr th:each="User : ${Users}">
+			<td style="font-size:50px" th:text="${User.username}"></td>
+			<th><h2>10.A</h2></th>
+		</tr>
+
+
+
+		<tr style="font-size:30px" th:each="Subject : ${Subjects}">
+			
+			<td><a th:href="@{/showGrade/} + ${Subject.subject_name} +'/'+ ${Users.username}" th:text="${Subject.subject_name}">Show</a></td>
+
+		</tr>
+
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:insert="fragments/headLoggedIn :: LoginContent">
+
+</head>
+<body>
+	<form th:action="@{/teacherHome}" method="post">
+
+		<table class="table" >
+			<tr th:each="User : ${Users}">
+				<td style="font-size: 30px" th:text="${User.username}" ></td>
+
+			</tr>
+
+
+			<tr>
+
+				<th><h2>Students Name</h2></th>
+
+			</tr>
+
+			<tr th:each="UserRole : ${UserRole}">
+
+				<td><a th:href="@{/show/} + ${UserRole.username}"
+					th:text="${UserRole.fullname}">Show</a></td>
+
+
+
+
+			</tr>
+
+		</table>
+	</form>
+</body>
+</html>

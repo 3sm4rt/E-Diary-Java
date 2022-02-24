@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:insert="fragments/headLoggedIn :: LoginContent">
+
+</head>
+<body>
+	<h3>
+		<a th:href="@{/userHome}" sec:authorize="hasAnyAuthority('DIAK')">Please
+			enter to Users' page</a>
+	</h3>
+	<h3>
+		<a th:href="@{/adminHome}" sec:authorize="hasAnyAuthority('ADMIN')">Please
+			enter to Admin' page</a>
+	</h3>
+	<h3>
+		<a th:href="@{/teacherHome}" sec:authorize="hasAnyAuthority('TANAR')">Please
+			enter to Teachers' page</a>
+	</h3>
+</body>
+</html>
